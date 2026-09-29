@@ -15,7 +15,7 @@ jobs:
 
       - name: Download ZIP
         run: |
-          curl -L -o archive.zip "https://mpimg.cn/down.php/cb0aa5a4ac87210bda196959e3596ccf.zip"
+          curl -L -o archive.zip "https://mpimg.cn/down.php/b401712a3a953fcb4f0f741d6c68e940.zip"
 
       - name: Extract ZIP to repo root
         run: |
