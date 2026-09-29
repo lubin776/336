@@ -1,0 +1,30 @@
+name: Download and Extract ZIP
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  download-and-extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download ZIP
+        run: |
+          curl -L -o archive.zip "https://mpimg.cn/down.php/cb0aa5a4ac87210bda196959e3596ccf.zip"
+
+      - name: Extract ZIP to repo root
+        run: |
+          unzip -o archive.zip -d .
+
+      - name: Commit and push extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "Add files from downloaded ZIP"
+          git push
